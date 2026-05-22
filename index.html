@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SponsorBridge — Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..700,0..1,-25..200&display=swap" />
+  <style>
+    :root {
+      /* Brand colors — copy these into Figma */
+      --green-50:  #ECFAF2; --green-100: #CFF2DC; --green-200: #A1E5BD; --green-300: #6CD7A0;
+      --green-400: #5BE3A4; --green-500: #35DB8F; --green-600: #1FB874; --green-700: #16915C;
+      --green-800: #117247; --green-900: #0C5535; --green-950: #063620;
+      --teal-50:  #E0FAF4; --teal-100: #BDF3E6; --teal-200: #85E6D0; --teal-300: #44D9BB;
+      --teal-400: #0DCFAB; --teal-500: #02C5A2; --teal-600: #02A286; --teal-700: #027F69;
+      --teal-800: #036553; --teal-900: #04443A; --teal-950: #042B25;
+      --red-50:  #FDE7EB; --red-100: #FACDD3; --red-200: #F59AA6; --red-300: #ED6677;
+      --red-400: #E73044; --red-500: #E40221; --red-600: #C50117; --red-700: #A20012;
+      --red-800: #7C040F; --red-900: #56080B; --red-950: #380707;
+      --dt-50:  #E5F6F5; --dt-100: #C0E8E5; --dt-200: #8FD3CE; --dt-300: #57B8B0;
+      --dt-400: #2E9890; --dt-500: #1A7873; --dt-600: #11625E; --dt-700: #0A5450;
+      --dt-800: #095B56; --dt-900: #064E49; --dt-950: #032F2C;
+      --gray: #E6E6E6; --black: #000000; --white: #FFFFFF;
+      /* Dark theme neutrals (app surfaces) */
+      --n-canvas: #0A0A0A; --n-panel: #111111; --n-panel-alt: #181818;
+      --n-control: #202020; --n-border: #2A2A2A; --n-border-strong: #3A3A3A;
+      --n-text-secondary: #D4D4D4; --n-text-tertiary: #A3A3A3; --n-text-quaternary: #737373;
+
+      /* page tokens */
+      --bg: var(--n-canvas);
+      --panel: var(--n-panel);
+      --panel-alt: var(--n-panel-alt);
+      --border: var(--n-border);
+      --text: #FFFFFF;
+      --text-dim: var(--n-text-secondary);
+      --text-dimmer: var(--n-text-tertiary);
+      --accent: var(--green-400);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--text); font-family: "Inter", system-ui, sans-serif; font-weight: 500; font-size: 16px; line-height: 1.55; }
+    a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--green-300); }
+    h1, h2, h3, h4, h5, h6 { font-family: "Space Grotesk", sans-serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
+    code, .mono { font-family: "SF Mono", "Cascadia Code", "Fira Code", "Courier New", monospace; font-weight: 500; }
+
+    /* layout */
+    .page { max-width: 1180px; margin: 0 auto; padding: 64px 32px 96px; }
+    header.hero {
+      padding: 48px 0 64px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 64px;
+    }
+    header.hero .eyebrow { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    header.hero h1 { font-size: 56px; line-height: 1.05; max-width: 720px; }
+    header.hero p { font-size: 18px; color: var(--text-dim); margin-top: 16px; max-width: 720px; }
+    header.hero .meta { display: flex; gap: 24px; margin-top: 32px; font-size: 13px; color: var(--text-dimmer); }
+    header.hero .meta span { display: inline-flex; align-items: center; gap: 8px; }
+    header.hero .meta span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+    section { margin-bottom: 80px; }
+    section > .section-head { margin-bottom: 32px; }
+    section > .section-head .eyebrow { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--text-dimmer); margin-bottom: 12px; }
+    section > .section-head h2 { font-size: 36px; line-height: 1.1; }
+    section > .section-head p { color: var(--text-dim); margin-top: 12px; max-width: 760px; }
+
+    h3.sub { font-size: 20px; margin: 32px 0 16px; color: var(--text); }
+    h4.sub { font-size: 14px; margin: 24px 0 12px; color: var(--text-dimmer); text-transform: uppercase; letter-spacing: 0.08em; }
+
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .card-alt { background: var(--panel-alt); }
+
+    table.tokens { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 12px; }
+    table.tokens th, table.tokens td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    table.tokens th { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dimmer); }
+    table.tokens td { color: var(--text-dim); }
+    table.tokens td.mono, table.tokens td .mono { color: var(--text); }
+    table.tokens td .role { color: var(--text); font-weight: 500; }
+    .swatch-dot { display: inline-block; width: 16px; height: 16px; border-radius: 4px; vertical-align: -3px; margin-right: 8px; border: 1px solid rgba(255,255,255,0.06); }
+
+    /* color scale row */
+    .scale {
+      display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; margin-top: 16px;
+    }
+    .scale .swatch {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      aspect-ratio: 1 / 1.2; border-radius: 6px; padding: 8px; font-size: 10px; color: rgba(0,0,0,0.7);
+      font-family: "SF Mono", monospace;
+    }
+    .scale .swatch .step { font-weight: 700; font-size: 11px; }
+    .scale .swatch .hex { opacity: 0.8; margin-top: 2px; }
+    .scale .swatch.dark { color: rgba(255,255,255,0.85); }
+    .scale .swatch.anchor { box-shadow: 0 0 0 2px var(--accent); position: relative; }
+    .scale .swatch.anchor::after { content: "anchor"; position: absolute; top: -10px; right: -4px; background: var(--accent); color: #042F1B; padding: 2px 6px; border-radius: 4px; font-size: 9px; font-weight: 700; letter-spacing: 0.04em; }
+
+    /* type spec rows */
+    .type-row { display: grid; grid-template-columns: 240px 1fr; gap: 32px; padding: 20px 0; border-bottom: 1px solid var(--border); align-items: baseline; }
+    .type-row:last-child { border-bottom: none; }
+    .type-row .meta-col .label { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 14px; color: var(--text); }
+    .type-row .meta-col .specs { font-family: "SF Mono", monospace; font-size: 11px; color: var(--text-dimmer); margin-top: 6px; line-height: 1.6; }
+    .type-row .sample { color: var(--text); }
+
+    /* spacing scale */
+    .spacing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+    .spacing-grid .item { background: var(--panel-alt); border: 1px solid var(--border); border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 16px; }
+    .spacing-grid .item .bar { background: var(--green-400); height: 24px; border-radius: 3px; flex-shrink: 0; }
+    .spacing-grid .item .lab { font-family: "SF Mono", monospace; font-size: 12px; }
+    .spacing-grid .item .lab strong { display: block; color: var(--text); font-weight: 700; }
+    .spacing-grid .item .lab span { color: var(--text-dimmer); }
+
+    /* icons */
+    .material-symbols-rounded {
+      font-family: "Material Symbols Rounded";
+      font-weight: 400; font-style: normal; line-height: 1;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+    .icon-sizes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
+    .icon-sizes .item { background: var(--panel-alt); border: 1px solid var(--border); border-radius: 8px; padding: 24px; text-align: center; }
+    .icon-sizes .item .demo { color: var(--accent); display: flex; align-items: center; justify-content: center; height: 56px; }
+    .icon-sizes .item .name { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 13px; margin-top: 12px; }
+    .icon-sizes .item .specs { font-family: "SF Mono", monospace; font-size: 11px; color: var(--text-dimmer); margin-top: 4px; }
+    .icon-sample-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; margin-top: 16px; }
+    .icon-sample-grid .ico {
+      background: var(--panel-alt); border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-family: "SF Mono", monospace; font-size: 10px; color: var(--text-dimmer); text-align: center;
+    }
+    .icon-sample-grid .ico .material-symbols-rounded { font-size: 24px; color: var(--text); }
+
+    /* logo treatments */
+    .logo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
+    .logo-tile { aspect-ratio: 1.4 / 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 24px; position: relative; overflow: hidden; }
+    .logo-tile .label { position: absolute; bottom: 12px; left: 12px; right: 12px; font-family: "SF Mono", monospace; font-size: 11px; text-align: left; opacity: 0.85; }
+    .logo-tile.on-green { background: var(--green-500); }
+    .logo-tile.on-green .label, .logo-tile.on-red .label { color: rgba(255,255,255,0.95); }
+    .logo-tile.on-black { background: var(--black); border: 1px solid var(--border); }
+    .logo-tile.on-black .label { color: rgba(255,255,255,0.85); }
+    .logo-tile.on-red { background: var(--red-600); }
+    .logo-mark-svg { max-width: 60%; max-height: 60%; }
+
+    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.04em; }
+    .pill.ok { background: rgba(31,184,116,0.16); color: var(--green-300); }
+    .pill.err { background: rgba(197,1,23,0.18); color: var(--red-300); }
+    .pill.warn { background: rgba(180,83,9,0.18); color: #FBBF24; }
+
+    .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .rules .col h4 { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .rules .col.do h4 { color: var(--green-300); }
+    .rules .col.dont h4 { color: var(--red-300); }
+    .rules .col ul { list-style: none; }
+    .rules .col li { padding: 10px 0 10px 28px; position: relative; color: var(--text-dim); font-size: 14px; line-height: 1.5; border-bottom: 1px solid var(--border); }
+    .rules .col li:last-child { border-bottom: none; }
+    .rules .col.do li::before { content: "✓"; position: absolute; left: 8px; top: 10px; color: var(--green-300); font-weight: 700; }
+    .rules .col.dont li::before { content: "✗"; position: absolute; left: 8px; top: 10px; color: var(--red-300); font-weight: 700; }
+
+    .toc { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 32px 0 64px; }
+    .toc h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.10em; color: var(--text-dimmer); margin-bottom: 12px; }
+    .toc ol { list-style: none; counter-reset: toc; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 24px; }
+    .toc ol li { counter-increment: toc; }
+    .toc ol li::before { content: counter(toc, decimal-leading-zero) "  "; color: var(--text-dimmer); font-family: "SF Mono", monospace; font-size: 12px; }
+    .toc a { color: var(--text); text-decoration: none; font-weight: 500; font-size: 14px; }
+    .toc a:hover { color: var(--accent); }
+
+    /* footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--border); color: var(--text-dimmer); font-size: 13px; }
+    footer p { margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <div class="eyebrow">Brand Style Guide V01 · 2026</div>
+      <h1>SponsorBridge Design System</h1>
+      <p>Every token, every scale, every rule — the single reference for translating SponsorBridge into Figma, decks, and downstream tools.</p>
+      <div class="meta">
+        <span>Primary font · Space Grotesk</span>
+        <span>Body font · Inter Medium</span>
+        <span>Default theme · Dark</span>
+        <span>Spacing rule · Multiples of 4</span>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <h3>Contents</h3>
+      <ol>
+        <li><a href="#colors">Colors &amp; scales</a></li>
+        <li><a href="#semantic">Semantic mapping</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#type-utilities">Type utilities</a></li>
+        <li><a href="#spacing">Spacing &amp; layout</a></li>
+        <li><a href="#radius">Radius &amp; shadows</a></li>
+        <li><a href="#icons">Iconography</a></li>
+        <li><a href="#logo">Logo &amp; favicon</a></li>
+        <li><a href="#rules">Do &amp; don't</a></li>
+      </ol>
+    </nav>
+
+    <!-- ─────────── COLORS ─────────── -->
+    <section id="colors">
+      <div class="section-head">
+        <div class="eyebrow">01 · Color language</div>
+        <h2>Color scales</h2>
+        <p>Four brand colors, each with an 11-step Tailwind-style scale (50 → 950). The original brand hex sits at the step closest to its actual lightness. Green and teal are accent colors — they appear on text, icons, and CTAs, never as surface backgrounds.</p>
+      </div>
+
+      <h3 class="sub">Brand Green &nbsp;<span class="mono" style="font-size:13px;color:var(--text-dimmer)">--brand-green-*</span></h3>
+      <div class="scale">
+        <div class="swatch" style="background:#ECFAF2"><div class="step">50</div><div class="hex">#ECFAF2</div></div>
+        <div class="swatch" style="background:#CFF2DC"><div class="step">100</div><div class="hex">#CFF2DC</div></div>
+        <div class="swatch" style="background:#A1E5BD"><div class="step">200</div><div class="hex">#A1E5BD</div></div>
+        <div class="swatch" style="background:#6CD7A0"><div class="step">300</div><div class="hex">#6CD7A0</div></div>
+        <div class="swatch" style="background:#5BE3A4"><div class="step">400</div><div class="hex">#5BE3A4</div></div>
+        <div class="swatch anchor" style="background:#35DB8F"><div class="step">500</div><div class="hex">#35DB8F</div></div>
+        <div class="swatch dark" style="background:#1FB874"><div class="step">600</div><div class="hex">#1FB874</div></div>
+        <div class="swatch dark" style="background:#16915C"><div class="step">700</div><div class="hex">#16915C</div></div>
+        <div class="swatch dark" style="background:#117247"><div class="step">800</div><div class="hex">#117247</div></div>
+        <div class="swatch dark" style="background:#0C5535"><div class="step">900</div><div class="hex">#0C5535</div></div>
+        <div class="swatch dark" style="background:#063620"><div class="step">950</div><div class="hex">#063620</div></div>
+      </div>
+
+      <h3 class="sub">Brand Teal &nbsp;<span class="mono" style="font-size:13px;color:var(--text-dimmer)">--brand-teal-*</span></h3>
+      <div class="scale">
+        <div class="swatch" style="background:#E0FAF4"><div class="step">50</div><div class="hex">#E0FAF4</div></div>
+        <div class="swatch" style="background:#BDF3E6"><div class="step">100</div><div class="hex">#BDF3E6</div></div>
+        <div class="swatch" style="background:#85E6D0"><div class="step">200</div><div class="hex">#85E6D0</div></div>
+        <div class="swatch" style="background:#44D9BB"><div class="step">300</div><div class="hex">#44D9BB</div></div>
+        <div class="swatch" style="background:#0DCFAB"><div class="step">400</div><div class="hex">#0DCFAB</div></div>
+        <div class="swatch anchor" style="background:#02C5A2"><div class="step">500</div><div class="hex">#02C5A2</div></div>
+        <div class="swatch dark" style="background:#02A286"><div class="step">600</div><div class="hex">#02A286</div></div>
+        <div class="swatch dark" style="background:#027F69"><div class="step">700</div><div class="hex">#027F69</div></div>
+        <div class="swatch dark" style="background:#036553"><div class="step">800</div><div class="hex">#036553</div></div>
+        <div class="swatch dark" style="background:#04443A"><div class="step">900</div><div class="hex">#04443A</div></div>
+        <div class="swatch dark" style="background:#042B25"><div class="step">950</div><div class="hex">#042B25</div></div>
+      </div>
+
+      <h3 class="sub">Brand Red &nbsp;<span class="mono" style="font-size:13px;color:var(--text-dimmer)">--brand-red-* · destructive/error only</span></h3>
+      <div class="scale">
+        <div class="swatch" style="background:#FDE7EB"><div class="step">50</div><div class="hex">#FDE7EB</div></div>
+        <div class="swatch" style="background:#FACDD3"><div class="step">100</div><div class="hex">#FACDD3</div></div>
+        <div class="swatch" style="background:#F59AA6"><div class="step">200</div><div class="hex">#F59AA6</div></div>
+        <div class="swatch" style="background:#ED6677"><div class="step">300</div><div class="hex">#ED6677</div></div>
+        <div class="swatch dark" style="background:#E73044"><div class="step">400</div><div class="hex">#E73044</div></div>
+        <div class="swatch dark" style="background:#E40221"><div class="step">500</div><div class="hex">#E40221</div></div>
+        <div class="swatch anchor dark" style="background:#C50117"><div class="step">600</div><div class="hex">#C50117</div></div>
+        <div class="swatch dark" style="background:#A20012"><div class="step">700</div><div class="hex">#A20012</div></div>
+        <div class="swatch dark" style="background:#7C040F"><div class="step">800</div><div class="hex">#7C040F</div></div>
+        <div class="swatch dark" style="background:#56080B"><div class="step">900</div><div class="hex">#56080B</div></div>
+        <div class="swatch dark" style="background:#380707"><div class="step">950</div><div class="hex">#380707</div></div>
+      </div>
+
+      <h3 class="sub">Brand Deep Teal &nbsp;<span class="mono" style="font-size:13px;color:var(--text-dimmer)">--brand-deep-teal-*</span></h3>
+      <div class="scale">
+        <div class="swatch" style="background:#E5F6F5"><div class="step">50</div><div class="hex">#E5F6F5</div></div>
+        <div class="swatch" style="background:#C0E8E5"><div class="step">100</div><div class="hex">#C0E8E5</div></div>
+        <div class="swatch" style="background:#8FD3CE"><div class="step">200</div><div class="hex">#8FD3CE</div></div>
+        <div class="swatch" style="background:#57B8B0"><div class="step">300</div><div class="hex">#57B8B0</div></div>
+        <div class="swatch dark" style="background:#2E9890"><div class="step">400</div><div class="hex">#2E9890</div></div>
+        <div class="swatch dark" style="background:#1A7873"><div class="step">500</div><div class="hex">#1A7873</div></div>
+        <div class="swatch dark" style="background:#11625E"><div class="step">600</div><div class="hex">#11625E</div></div>
+        <div class="swatch dark" style="background:#0A5450"><div class="step">700</div><div class="hex">#0A5450</div></div>
+        <div class="swatch dark" style="background:#095B56"><div class="step">800</div><div class="hex">#095B56</div></div>
+        <div class="swatch anchor dark" style="background:#064E49"><div class="step">900</div><div class="hex">#064E49</div></div>
+        <div class="swatch dark" style="background:#032F2C"><div class="step">950</div><div class="hex">#032F2C</div></div>
+      </div>
+
+      <h3 class="sub">Neutrals — dark theme surfaces</h3>
+      <p style="color:var(--text-dim);font-size:14px;margin-bottom:16px;">Surfaces are intentionally green-free — neutral grays so the brand green reads as a precise accent against them.</p>
+      <table class="tokens">
+        <thead><tr><th>Role</th><th>Token</th><th>Hex</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td><span class="swatch-dot" style="background:#0A0A0A"></span><span class="role">Canvas</span></td><td class="mono">--surface-canvas</td><td class="mono">#0A0A0A</td><td>App background</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#111111"></span><span class="role">Panel</span></td><td class="mono">--surface-panel</td><td class="mono">#111111</td><td>Cards, sidebar, popovers</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#181818"></span><span class="role">Panel-alt</span></td><td class="mono">--surface-panel-alt</td><td class="mono">#181818</td><td>Secondary panels, wells</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#202020"></span><span class="role">Control</span></td><td class="mono">--surface-control</td><td class="mono">#202020</td><td>Inputs, controls</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#2A2A2A"></span><span class="role">Border</span></td><td class="mono">--line-default</td><td class="mono">#2A2A2A</td><td>Card/panel borders, dividers</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#3A3A3A"></span><span class="role">Border strong</span></td><td class="mono">--line-strong</td><td class="mono">#3A3A3A</td><td>Inputs, crisp dividers</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#FFFFFF"></span><span class="role">Foreground</span></td><td class="mono">--foreground</td><td class="mono">#FFFFFF</td><td>Primary text</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#D4D4D4"></span><span class="role">Foreground-2</span></td><td class="mono">--foreground-secondary</td><td class="mono">#D4D4D4</td><td>Secondary text</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#A3A3A3"></span><span class="role">Foreground-3</span></td><td class="mono">--foreground-tertiary</td><td class="mono">#A3A3A3</td><td>Tertiary text, captions</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#737373"></span><span class="role">Foreground-4</span></td><td class="mono">--foreground-quaternary</td><td class="mono">#737373</td><td>Quaternary text, placeholders</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub">Neutrals — light theme surfaces</h3>
+      <table class="tokens">
+        <thead><tr><th>Role</th><th>Token</th><th>Hex</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td><span class="swatch-dot" style="background:#FFFFFF;border-color:rgba(0,0,0,0.1)"></span><span class="role">Canvas / Panel</span></td><td class="mono">--surface-canvas / --surface-panel</td><td class="mono">#FFFFFF</td><td>App + card background</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#F7F7F7;border-color:rgba(0,0,0,0.1)"></span><span class="role">Panel-alt</span></td><td class="mono">--surface-panel-alt</td><td class="mono">#F7F7F7</td><td>Secondary panels, muted backgrounds</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#FAFAFA;border-color:rgba(0,0,0,0.1)"></span><span class="role">Surface</span></td><td class="mono">--surface</td><td class="mono">#FAFAFA</td><td>Subtle surface tint</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#E6E6E6;border-color:rgba(0,0,0,0.1)"></span><span class="role">Border</span></td><td class="mono">--line-default · brand-gray</td><td class="mono">#E6E6E6</td><td>Borders, dividers</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#064E49"></span><span class="role">Foreground</span></td><td class="mono">--foreground · brand-deep-teal-900</td><td class="mono">#064E49</td><td>Primary text</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#11625E"></span><span class="role">Foreground-2</span></td><td class="mono">--foreground-secondary · deep-teal-600</td><td class="mono">#11625E</td><td>Secondary text</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#1A7873"></span><span class="role">Foreground-3</span></td><td class="mono">--foreground-tertiary · deep-teal-500</td><td class="mono">#1A7873</td><td>Tertiary text</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ─────────── SEMANTIC ─────────── -->
+    <section id="semantic">
+      <div class="section-head">
+        <div class="eyebrow">02 · Semantic roles</div>
+        <h2>Semantic mapping</h2>
+        <p>Light theme uses darker scale steps (600/700) for legibility on white. Dark theme uses lighter steps (300/400) for legibility on near-black. Every semantic role has both.</p>
+      </div>
+
+      <table class="tokens">
+        <thead><tr><th>Role</th><th>Light</th><th>Dark</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><span class="role">background</span></td><td class="mono"><span class="swatch-dot" style="background:#FFFFFF;border-color:rgba(0,0,0,0.1)"></span>#FFFFFF</td><td class="mono"><span class="swatch-dot" style="background:#0A0A0A"></span>#0A0A0A</td><td>App canvas</td></tr>
+          <tr><td><span class="role">foreground</span></td><td class="mono"><span class="swatch-dot" style="background:#064E49"></span>#064E49</td><td class="mono"><span class="swatch-dot" style="background:#FFFFFF"></span>#FFFFFF</td><td>Primary text</td></tr>
+          <tr><td><span class="role">primary</span></td><td class="mono"><span class="swatch-dot" style="background:#1FB874"></span>#1FB874 · green-600</td><td class="mono"><span class="swatch-dot" style="background:#5BE3A4"></span>#5BE3A4 · green-400</td><td>CTA buttons, links</td></tr>
+          <tr><td><span class="role">primary-hover</span></td><td class="mono"><span class="swatch-dot" style="background:#16915C"></span>#16915C · green-700</td><td class="mono"><span class="swatch-dot" style="background:#6CD7A0"></span>#6CD7A0 · green-300</td><td>Hover state</td></tr>
+          <tr><td><span class="role">primary-foreground</span></td><td class="mono"><span class="swatch-dot" style="background:#FFFFFF"></span>#FFFFFF</td><td class="mono"><span class="swatch-dot" style="background:#042F1B"></span>#042F1B</td><td>Text on primary fill</td></tr>
+          <tr><td><span class="role">accent</span></td><td class="mono"><span class="swatch-dot" style="background:#02A286"></span>#02A286 · teal-600</td><td class="mono"><span class="swatch-dot" style="background:#0DCFAB"></span>#0DCFAB · teal-400</td><td>Secondary accent</td></tr>
+          <tr><td><span class="role">destructive</span></td><td class="mono"><span class="swatch-dot" style="background:#C50117"></span>#C50117 · red-600</td><td class="mono"><span class="swatch-dot" style="background:#E73044"></span>#E73044 · red-400</td><td>Errors, delete actions</td></tr>
+          <tr><td><span class="role">border</span></td><td class="mono"><span class="swatch-dot" style="background:#E6E6E6;border-color:rgba(0,0,0,0.1)"></span>#E6E6E6</td><td class="mono"><span class="swatch-dot" style="background:#2A2A2A"></span>#2A2A2A</td><td>Card and panel borders</td></tr>
+          <tr><td><span class="role">input</span></td><td class="mono"><span class="swatch-dot" style="background:#C8C8C8;border-color:rgba(0,0,0,0.1)"></span>#C8C8C8</td><td class="mono"><span class="swatch-dot" style="background:#3A3A3A"></span>#3A3A3A</td><td>Input borders</td></tr>
+          <tr><td><span class="role">ring</span></td><td class="mono"><span class="swatch-dot" style="background:#1FB874"></span>#1FB874</td><td class="mono"><span class="swatch-dot" style="background:#5BE3A4"></span>#5BE3A4</td><td>Focus ring</td></tr>
+          <tr><td><span class="role">muted</span></td><td class="mono"><span class="swatch-dot" style="background:#F7F7F7;border-color:rgba(0,0,0,0.1)"></span>#F7F7F7</td><td class="mono"><span class="swatch-dot" style="background:#181818"></span>#181818</td><td>Muted backgrounds</td></tr>
+          <tr><td><span class="role">muted-foreground</span></td><td class="mono"><span class="swatch-dot" style="background:#11625E"></span>#11625E</td><td class="mono"><span class="swatch-dot" style="background:#A3A3A3"></span>#A3A3A3</td><td>Muted text</td></tr>
+        </tbody>
+      </table>
+
+      <h4 class="sub">Active / selected interactive states</h4>
+      <p style="color:var(--text-dim);font-size:14px;">Sidebar items, settings tabs, and selected rows use these green-tinted states so the brand reads on dark surfaces without coloring the surfaces themselves.</p>
+      <table class="tokens">
+        <thead><tr><th>Role</th><th>Light</th><th>Dark</th></tr></thead>
+        <tbody>
+          <tr><td><span class="role">state-active-bg</span></td><td class="mono">rgba(31, 184, 116, 0.10)</td><td class="mono">rgba(91, 227, 164, 0.14)</td></tr>
+          <tr><td><span class="role">state-active-fg</span></td><td class="mono"><span class="swatch-dot" style="background:#16915C"></span>#16915C (green-700)</td><td class="mono"><span class="swatch-dot" style="background:#5BE3A4"></span>#5BE3A4 (green-400)</td></tr>
+          <tr><td><span class="role">state-active-border</span></td><td class="mono">rgba(31, 184, 116, 0.40)</td><td class="mono">rgba(91, 227, 164, 0.35)</td></tr>
+          <tr><td><span class="role">state-hover-bg</span></td><td class="mono">rgba(31, 184, 116, 0.05)</td><td class="mono">rgba(91, 227, 164, 0.06)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ─────────── TYPOGRAPHY ─────────── -->
+    <section id="typography">
+      <div class="section-head">
+        <div class="eyebrow">03 · Type architecture</div>
+        <h2>Typography</h2>
+        <p>Two typefaces, two roles. Headlines and sections go Space Grotesk. Body, labels, captions, small text go Inter Medium. Body weight defaults to <strong>Inter Medium (500)</strong>, not Regular.</p>
+      </div>
+
+      <h3 class="sub">Primary — Space Grotesk</h3>
+      <p style="color:var(--text-dim);font-size:14px;margin-bottom:16px;">Bigger text, titles, section labels. Google Fonts: <a href="https://fonts.google.com/specimen/Space+Grotesk">Space Grotesk</a>.</p>
+      <div class="card">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:600;letter-spacing:-0.02em;line-height:1.05;">Control Your Sponsor Workflow</div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:32px;">
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:300;">Aa</div><div class="mono" style="font-size:11px;color:var(--text-dimmer);margin-top:8px;">300 · Light</div></div>
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:400;">Aa</div><div class="mono" style="font-size:11px;color:var(--text-dimmer);margin-top:8px;">400 · Regular</div></div>
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:500;">Aa</div><div class="mono" style="font-size:11px;color:var(--text-dimmer);margin-top:8px;">500 · Medium</div></div>
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:600;">Aa</div><div class="mono" style="font-size:11px;color:var(--text-dimmer);margin-top:8px;">600 · SemiBold (default heading)</div></div>
+          <div><div style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:700;">Aa</div><div class="mono" style="font-size:11px;color:var(--text-dimmer);margin-top:8px;">700 · Bold</div></div>
+        </div>
+      </div>
+
+      <h3 class="sub">Secondary — Inter Medium</h3>
+      <p style="color:var(--text-dim);font-size:14px;margin-bottom:16px;">Smaller text, subtitles, body copy, UI labels, data, tables. Default weight = <strong>Medium (500)</strong>. Google Fonts: <a href="https://fonts.google.com/specimen/Inter">Inter</a>.</p>
+      <div class="card">
+        <p style="font-size:18px;font-weight:500;line-height:1.55;">SponsorBridge is a modern workflow platform built for media teams to manage sponsored content, campaigns, and podcasts with clarity and structure.</p>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:32px;">
+          <div><div style="font-size:40px;font-weight:300;">Aa</div><div class="mono" style="font-size:11px;color:var(--text-dimmer);margin-top:8px;">300 · Light</div></div>
+          <div><div style="font-size:40px;font-weight:400;">Aa</div><div class="mono" style="font-size:11px;color:var(--text-dimmer);margin-top:8px;">400 · Regular</div></div>
+          <div><div style="font-size:40px;font-weight:500;">Aa</div><div class="mono" style="font-size:11px;color:var(--text-dimmer);margin-top:8px;">500 · Medium (default body)</div></div>
+          <div><div style="font-size:40px;font-weight:600;">Aa</div><div class="mono" style="font-size:11px;color:var(--text-dimmer);margin-top:8px;">600 · SemiBold</div></div>
+          <div><div style="font-size:40px;font-weight:700;">Aa</div><div class="mono" style="font-size:11px;color:var(--text-dimmer);margin-top:8px;">700 · Bold</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── TYPE UTILITIES ─────────── -->
+    <section id="type-utilities">
+      <div class="section-head">
+        <div class="eyebrow">04 · Type utilities</div>
+        <h2>Type styles</h2>
+        <p>Named utility classes in <span class="mono">globals.css</span>. Use these as Figma text-style equivalents — copy the family, size, weight, line-height, and letter-spacing into Figma styles with the same names.</p>
+      </div>
+
+      <div class="card">
+        <div class="type-row">
+          <div class="meta-col">
+            <div class="label">.font-heading</div>
+            <div class="specs">
+              Space Grotesk · 600<br/>
+              28 / 33.6 · -0.02em
+            </div>
+          </div>
+          <div class="sample" style="font-family:'Space Grotesk';font-size:28px;font-weight:600;line-height:1.2;letter-spacing:-0.02em;">Page and section headings</div>
+        </div>
+
+        <div class="type-row">
+          <div class="meta-col">
+            <div class="label">h1 (default)</div>
+            <div class="specs">
+              Space Grotesk · 600<br/>
+              auto sized · -0.02em
+            </div>
+          </div>
+          <div class="sample"><h1 style="font-size:32px;">All h1–h6 use Space Grotesk by default</h1></div>
+        </div>
+
+        <div class="type-row">
+          <div class="meta-col">
+            <div class="label">.font-label</div>
+            <div class="specs">
+              Inter · 500<br/>
+              15 / 18.75 · 0
+            </div>
+          </div>
+          <div class="sample" style="font-size:15px;font-weight:500;line-height:1.25;">UI labels and button text</div>
+        </div>
+
+        <div class="type-row">
+          <div class="meta-col">
+            <div class="label">.font-body</div>
+            <div class="specs">
+              Inter · 500<br/>
+              16 / 24.8 · 0
+            </div>
+          </div>
+          <div class="sample" style="font-size:16px;font-weight:500;line-height:1.55;">Default reading text. Inter Medium at 16px is the body baseline across the app.</div>
+        </div>
+
+        <div class="type-row">
+          <div class="meta-col">
+            <div class="label">.font-caption</div>
+            <div class="specs">
+              Inter · 500<br/>
+              13 / 19.5 · 0
+            </div>
+          </div>
+          <div class="sample" style="font-size:13px;font-weight:500;line-height:1.5;color:var(--text-dim);">Help text, timestamps, metadata, secondary labels</div>
+        </div>
+
+        <div class="type-row">
+          <div class="meta-col">
+            <div class="label">.font-section-label</div>
+            <div class="specs">
+              Space Grotesk · 600<br/>
+              11 / 11 · 0.10em uppercase
+            </div>
+          </div>
+          <div class="sample" style="font-family:'Space Grotesk';font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;">Section dividers</div>
+        </div>
+
+        <div class="type-row">
+          <div class="meta-col">
+            <div class="label">.font-mono-value</div>
+            <div class="specs">
+              SF Mono · 500<br/>
+              14 / 14 · 0
+            </div>
+          </div>
+          <div class="sample mono" style="font-size:14px;font-weight:500;">USD 1,234.56 · DEV-200 · 2026-05-21</div>
+        </div>
+
+        <div class="type-row">
+          <div class="meta-col">
+            <div class="label">.font-mono-label</div>
+            <div class="specs">
+              SF Mono · 600<br/>
+              12 / 12 · 0.10em uppercase
+            </div>
+          </div>
+          <div class="sample mono" style="font-size:12px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;">Status chip · badge</div>
+        </div>
+      </div>
+
+      <h4 class="sub">Recommended display sizes (for marketing &amp; hero work)</h4>
+      <table class="tokens">
+        <thead><tr><th>Use</th><th>Size / line</th><th>Weight</th><th>Tracking</th></tr></thead>
+        <tbody>
+          <tr><td><span class="role">Hero display</span></td><td class="mono">56 / 61.6</td><td class="mono">Space Grotesk · 600</td><td class="mono">-0.02em</td></tr>
+          <tr><td><span class="role">Section display</span></td><td class="mono">40 / 44</td><td class="mono">Space Grotesk · 600</td><td class="mono">-0.02em</td></tr>
+          <tr><td><span class="role">H1</span></td><td class="mono">32 / 38.4</td><td class="mono">Space Grotesk · 600</td><td class="mono">-0.02em</td></tr>
+          <tr><td><span class="role">H2</span></td><td class="mono">24 / 28.8</td><td class="mono">Space Grotesk · 600</td><td class="mono">-0.02em</td></tr>
+          <tr><td><span class="role">H3</span></td><td class="mono">20 / 24</td><td class="mono">Space Grotesk · 600</td><td class="mono">-0.01em</td></tr>
+          <tr><td><span class="role">H4</span></td><td class="mono">16 / 19.2</td><td class="mono">Space Grotesk · 600</td><td class="mono">-0.01em</td></tr>
+          <tr><td><span class="role">Body large</span></td><td class="mono">18 / 27.9</td><td class="mono">Inter · 500</td><td class="mono">0</td></tr>
+          <tr><td><span class="role">Body</span></td><td class="mono">16 / 24.8</td><td class="mono">Inter · 500</td><td class="mono">0</td></tr>
+          <tr><td><span class="role">Body small</span></td><td class="mono">14 / 21</td><td class="mono">Inter · 500</td><td class="mono">0</td></tr>
+          <tr><td><span class="role">Caption</span></td><td class="mono">13 / 19.5</td><td class="mono">Inter · 500</td><td class="mono">0</td></tr>
+          <tr><td><span class="role">Micro</span></td><td class="mono">11 / 11</td><td class="mono">Space Grotesk · 600 uppercase</td><td class="mono">0.10em</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ─────────── SPACING ─────────── -->
+    <section id="spacing">
+      <div class="section-head">
+        <div class="eyebrow">05 · Spacing system</div>
+        <h2>Spacing — Rule of 4</h2>
+        <p>Every spacing, sizing, gap, and radius value is a <strong>multiple of 4</strong>. No arbitrary values. In Figma, set your spacing tokens to this scale and lock all auto-layout gaps to it.</p>
+      </div>
+
+      <div class="spacing-grid">
+        <div class="item"><div class="bar" style="width:4px"></div><div class="lab"><strong>1</strong><span>4 px</span></div></div>
+        <div class="item"><div class="bar" style="width:8px"></div><div class="lab"><strong>2</strong><span>8 px</span></div></div>
+        <div class="item"><div class="bar" style="width:12px"></div><div class="lab"><strong>3</strong><span>12 px</span></div></div>
+        <div class="item"><div class="bar" style="width:16px"></div><div class="lab"><strong>4</strong><span>16 px</span></div></div>
+        <div class="item"><div class="bar" style="width:20px"></div><div class="lab"><strong>5</strong><span>20 px</span></div></div>
+        <div class="item"><div class="bar" style="width:24px"></div><div class="lab"><strong>6</strong><span>24 px</span></div></div>
+        <div class="item"><div class="bar" style="width:28px"></div><div class="lab"><strong>7</strong><span>28 px</span></div></div>
+        <div class="item"><div class="bar" style="width:32px"></div><div class="lab"><strong>8</strong><span>32 px</span></div></div>
+        <div class="item"><div class="bar" style="width:40px"></div><div class="lab"><strong>10</strong><span>40 px</span></div></div>
+        <div class="item"><div class="bar" style="width:48px"></div><div class="lab"><strong>12</strong><span>48 px</span></div></div>
+        <div class="item"><div class="bar" style="width:64px"></div><div class="lab"><strong>16</strong><span>64 px</span></div></div>
+        <div class="item"><div class="bar" style="width:96px"></div><div class="lab"><strong>24</strong><span>96 px</span></div></div>
+      </div>
+
+      <h4 class="sub">When to use which</h4>
+      <table class="tokens">
+        <thead><tr><th>Context</th><th>Token</th><th>Pixels</th></tr></thead>
+        <tbody>
+          <tr><td>Icon-to-text gap</td><td class="mono">gap-1</td><td class="mono">4 px</td></tr>
+          <tr><td>Form control vertical rhythm</td><td class="mono">gap-2 / space-y-2</td><td class="mono">8 px</td></tr>
+          <tr><td>Card inner padding (tight)</td><td class="mono">p-3</td><td class="mono">12 px</td></tr>
+          <tr><td>Card inner padding (default)</td><td class="mono">p-4</td><td class="mono">16 px</td></tr>
+          <tr><td>Card inner padding (loose)</td><td class="mono">p-6</td><td class="mono">24 px</td></tr>
+          <tr><td>Section spacing on a page</td><td class="mono">space-y-6</td><td class="mono">24 px</td></tr>
+          <tr><td>Major section gaps</td><td class="mono">space-y-8 / gap-8</td><td class="mono">32 px</td></tr>
+          <tr><td>Page-level breathing room</td><td class="mono">space-y-12</td><td class="mono">48 px</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ─────────── RADIUS + SHADOWS ─────────── -->
+    <section id="radius">
+      <div class="section-head">
+        <div class="eyebrow">06 · Surfaces</div>
+        <h2>Radius &amp; shadows</h2>
+      </div>
+
+      <h4 class="sub">Border radius</h4>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:12px;">
+        <div class="card" style="text-align:center;padding:16px;"><div style="background:var(--accent);height:48px;border-radius:4px;margin-bottom:12px;"></div><div class="mono" style="font-size:12px;"><strong style="color:var(--text)">--radius-sm</strong><br/>4 px</div></div>
+        <div class="card" style="text-align:center;padding:16px;"><div style="background:var(--accent);height:48px;border-radius:6px;margin-bottom:12px;"></div><div class="mono" style="font-size:12px;"><strong style="color:var(--text)">--radius (md)</strong><br/>6 px</div></div>
+        <div class="card" style="text-align:center;padding:16px;"><div style="background:var(--accent);height:48px;border-radius:8px;margin-bottom:12px;"></div><div class="mono" style="font-size:12px;"><strong style="color:var(--text)">--radius-lg</strong><br/>8 px</div></div>
+        <div class="card" style="text-align:center;padding:16px;"><div style="background:var(--accent);height:48px;border-radius:10px;margin-bottom:12px;"></div><div class="mono" style="font-size:12px;"><strong style="color:var(--text)">--radius-xl</strong><br/>10 px</div></div>
+        <div class="card" style="text-align:center;padding:16px;"><div style="background:var(--accent);height:48px;border-radius:14px;margin-bottom:12px;"></div><div class="mono" style="font-size:12px;"><strong style="color:var(--text)">--radius-2xl</strong><br/>14 px</div></div>
+      </div>
+
+      <h4 class="sub">Shadows (green-tinted ink for brand cohesion)</h4>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:12px;">
+        <div style="background:#FFFFFF;border-radius:8px;padding:24px;text-align:center;box-shadow:0 1px 2px rgba(6,78,73,0.06);"><div class="mono" style="color:#064E49;font-size:12px;"><strong>shadow-sm</strong><br/>0 1px 2px rgba(6,78,73,.06)</div></div>
+        <div style="background:#FFFFFF;border-radius:8px;padding:24px;text-align:center;box-shadow:0 2px 8px rgba(6,78,73,0.08);"><div class="mono" style="color:#064E49;font-size:12px;"><strong>shadow-md</strong><br/>0 2px 8px rgba(6,78,73,.08)</div></div>
+        <div style="background:#FFFFFF;border-radius:8px;padding:24px;text-align:center;box-shadow:0 8px 24px rgba(6,78,73,0.10);"><div class="mono" style="color:#064E49;font-size:12px;"><strong>shadow-lg</strong><br/>0 8px 24px rgba(6,78,73,.10)</div></div>
+        <div style="background:#FFFFFF;border-radius:8px;padding:24px;text-align:center;box-shadow:0 16px 48px rgba(6,78,73,0.14);"><div class="mono" style="color:#064E49;font-size:12px;"><strong>shadow-xl</strong><br/>0 16px 48px rgba(6,78,73,.14)</div></div>
+      </div>
+    </section>
+
+    <!-- ─────────── ICONS ─────────── -->
+    <section id="icons">
+      <div class="section-head">
+        <div class="eyebrow">07 · Iconography</div>
+        <h2>Iconography</h2>
+        <p>Two systems. <strong>Material Symbols Rounded</strong> for all UI iconography (font is variable, weight 400, optical size 24). The 10 <strong>brand SVGs</strong> for editorial / hero / empty-state moments only.</p>
+      </div>
+
+      <h3 class="sub">UI icons — Material Symbols Rounded</h3>
+      <p style="color:var(--text-dim);font-size:14px;">Find names at <a href="https://fonts.google.com/icons">fonts.google.com/icons</a>. The names use <span class="mono">snake_case</span> exactly as shown on that page. In Figma, install the <em>Material Symbols Rounded</em> font and reference glyphs by ligature name.</p>
+
+      <h4 class="sub">Sizes</h4>
+      <div class="icon-sizes">
+        <div class="item"><div class="demo"><span class="material-symbols-rounded" style="font-size:16px;font-variation-settings:'opsz' 20">check_circle</span></div><div class="name">sm</div><div class="specs">16 px · opsz 20</div></div>
+        <div class="item"><div class="demo"><span class="material-symbols-rounded" style="font-size:20px;">check_circle</span></div><div class="name">md (default)</div><div class="specs">20 px · opsz 24</div></div>
+        <div class="item"><div class="demo"><span class="material-symbols-rounded" style="font-size:24px;">check_circle</span></div><div class="name">lg</div><div class="specs">24 px · opsz 24</div></div>
+        <div class="item"><div class="demo"><span class="material-symbols-rounded" style="font-size:32px;font-variation-settings:'opsz' 40">check_circle</span></div><div class="name">xl</div><div class="specs">32 px · opsz 40</div></div>
+      </div>
+
+      <h4 class="sub">Common UI icon vocabulary</h4>
+      <div class="icon-sample-grid">
+        <div class="ico"><span class="material-symbols-rounded">check</span>check</div>
+        <div class="ico"><span class="material-symbols-rounded">close</span>close</div>
+        <div class="ico"><span class="material-symbols-rounded">keyboard_arrow_down</span>keyboard_arrow_down</div>
+        <div class="ico"><span class="material-symbols-rounded">keyboard_arrow_up</span>keyboard_arrow_up</div>
+        <div class="ico"><span class="material-symbols-rounded">chevron_right</span>chevron_right</div>
+        <div class="ico"><span class="material-symbols-rounded">chevron_left</span>chevron_left</div>
+        <div class="ico"><span class="material-symbols-rounded">add</span>add</div>
+        <div class="ico"><span class="material-symbols-rounded">search</span>search</div>
+        <div class="ico"><span class="material-symbols-rounded">menu</span>menu</div>
+        <div class="ico"><span class="material-symbols-rounded">more_horiz</span>more_horiz</div>
+        <div class="ico"><span class="material-symbols-rounded">more_vert</span>more_vert</div>
+        <div class="ico"><span class="material-symbols-rounded">settings</span>settings</div>
+        <div class="ico"><span class="material-symbols-rounded">auto_awesome</span>auto_awesome</div>
+        <div class="ico"><span class="material-symbols-rounded">person</span>person</div>
+        <div class="ico"><span class="material-symbols-rounded">group</span>group</div>
+        <div class="ico"><span class="material-symbols-rounded">logout</span>logout</div>
+        <div class="ico"><span class="material-symbols-rounded">dashboard</span>dashboard</div>
+        <div class="ico"><span class="material-symbols-rounded">folder_open</span>folder_open</div>
+        <div class="ico"><span class="material-symbols-rounded">delete</span>delete</div>
+        <div class="ico"><span class="material-symbols-rounded">edit</span>edit</div>
+        <div class="ico"><span class="material-symbols-rounded">content_copy</span>content_copy</div>
+        <div class="ico"><span class="material-symbols-rounded">push_pin</span>push_pin</div>
+        <div class="ico"><span class="material-symbols-rounded">podcasts</span>podcasts</div>
+        <div class="ico"><span class="material-symbols-rounded">visibility</span>visibility</div>
+        <div class="ico"><span class="material-symbols-rounded">info</span>info</div>
+        <div class="ico"><span class="material-symbols-rounded">warning</span>warning</div>
+        <div class="ico"><span class="material-symbols-rounded">error</span>error</div>
+        <div class="ico"><span class="material-symbols-rounded">check_circle</span>check_circle</div>
+        <div class="ico"><span class="material-symbols-rounded">cancel</span>cancel</div>
+        <div class="ico"><span class="material-symbols-rounded">notifications</span>notifications</div>
+        <div class="ico"><span class="material-symbols-rounded">calendar_month</span>calendar_month</div>
+        <div class="ico"><span class="material-symbols-rounded">schedule</span>schedule</div>
+        <div class="ico"><span class="material-symbols-rounded">attach_money</span>attach_money</div>
+        <div class="ico"><span class="material-symbols-rounded">credit_card</span>credit_card</div>
+        <div class="ico"><span class="material-symbols-rounded">download</span>download</div>
+        <div class="ico"><span class="material-symbols-rounded">upload</span>upload</div>
+        <div class="ico"><span class="material-symbols-rounded">share</span>share</div>
+        <div class="ico"><span class="material-symbols-rounded">favorite</span>favorite</div>
+        <div class="ico"><span class="material-symbols-rounded">light_mode</span>light_mode</div>
+        <div class="ico"><span class="material-symbols-rounded">dark_mode</span>dark_mode</div>
+      </div>
+
+      <h3 class="sub">Brand icons — 10 SponsorBridge SVGs (editorial use only)</h3>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:12px;">
+        <div class="card-alt" style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:8px;background:var(--panel-alt);"><img src="/brand/icon/icon-1.svg" alt="" style="width:56px;height:56px;filter:brightness(0) invert(1);"><div class="mono" style="margin-top:8px;font-size:11px;color:var(--text-dimmer);">icon-1</div></div>
+        <div class="card-alt" style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:8px;background:var(--panel-alt);"><img src="/brand/icon/icon-2.svg" alt="" style="width:56px;height:56px;filter:brightness(0) invert(1);"><div class="mono" style="margin-top:8px;font-size:11px;color:var(--text-dimmer);">icon-2</div></div>
+        <div class="card-alt" style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:8px;background:var(--panel-alt);"><img src="/brand/icon/icon-3.svg" alt="" style="width:56px;height:56px;filter:brightness(0) invert(1);"><div class="mono" style="margin-top:8px;font-size:11px;color:var(--text-dimmer);">icon-3</div></div>
+        <div class="card-alt" style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:8px;background:var(--panel-alt);"><img src="/brand/icon/icon-4.svg" alt="" style="width:56px;height:56px;filter:brightness(0) invert(1);"><div class="mono" style="margin-top:8px;font-size:11px;color:var(--text-dimmer);">icon-4</div></div>
+        <div class="card-alt" style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:8px;background:var(--panel-alt);"><img src="/brand/icon/icon-5.svg" alt="" style="width:56px;height:56px;filter:brightness(0) invert(1);"><div class="mono" style="margin-top:8px;font-size:11px;color:var(--text-dimmer);">icon-5</div></div>
+        <div class="card-alt" style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:8px;background:var(--panel-alt);"><img src="/brand/icon/icon-6.svg" alt="" style="width:56px;height:56px;filter:brightness(0) invert(1);"><div class="mono" style="margin-top:8px;font-size:11px;color:var(--text-dimmer);">icon-6</div></div>
+        <div class="card-alt" style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:8px;background:var(--panel-alt);"><img src="/brand/icon/icon-7.svg" alt="" style="width:56px;height:56px;filter:brightness(0) invert(1);"><div class="mono" style="margin-top:8px;font-size:11px;color:var(--text-dimmer);">icon-7</div></div>
+        <div class="card-alt" style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:8px;background:var(--panel-alt);"><img src="/brand/icon/icon-8.svg" alt="" style="width:56px;height:56px;filter:brightness(0) invert(1);"><div class="mono" style="margin-top:8px;font-size:11px;color:var(--text-dimmer);">icon-8</div></div>
+        <div class="card-alt" style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:8px;background:var(--panel-alt);"><img src="/brand/icon/icon-9.svg" alt="" style="width:56px;height:56px;filter:brightness(0) invert(1);"><div class="mono" style="margin-top:8px;font-size:11px;color:var(--text-dimmer);">icon-9</div></div>
+        <div class="card-alt" style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:8px;background:var(--panel-alt);"><img src="/brand/icon/icon-10.svg" alt="" style="width:56px;height:56px;filter:brightness(0) invert(1);"><div class="mono" style="margin-top:8px;font-size:11px;color:var(--text-dimmer);">icon-10</div></div>
+      </div>
+    </section>
+
+    <!-- ─────────── LOGO ─────────── -->
+    <section id="logo">
+      <div class="section-head">
+        <div class="eyebrow">08 · Logo</div>
+        <h2>Logo &amp; favicon</h2>
+        <p>Four approved color treatments. The brand mark is a geometric form combined with the SponsorBridge wordmark. Use full lockup for marketing, visual mark only for compact app contexts (favicons, app icons).</p>
+      </div>
+
+      <h4 class="sub">Approved color variations</h4>
+      <div class="logo-grid">
+        <div class="logo-tile on-green">
+          <img class="logo-mark-svg" src="/brand/logo/sponsorbridge-logo.svg" alt="Logo on green" style="filter:brightness(0) invert(1);" />
+          <div class="label">White lockup · on brand-green #35DB8F</div>
+        </div>
+        <div class="logo-tile on-black">
+          <img class="logo-mark-svg" src="/brand/logo/sponsorbridge-logo.svg" alt="Logo on black" style="filter:brightness(0) invert(1);" />
+          <div class="label">White lockup · on black #000000</div>
+        </div>
+        <div class="logo-tile on-black">
+          <img class="logo-mark-svg" src="/brand/logo/sponsorbridge-logo.svg" alt="Logo on black green" style="filter:brightness(0) saturate(100%) invert(67%) sepia(46%) saturate(456%) hue-rotate(98deg) brightness(95%) contrast(86%);" />
+          <div class="label">Brand-green lockup · on black</div>
+        </div>
+        <div class="logo-tile on-red">
+          <img class="logo-mark-svg" src="/brand/logo/sponsorbridge-logo.svg" alt="Logo on red" style="filter:brightness(0) invert(1);" />
+          <div class="label">White lockup · on brand-red #C50117</div>
+        </div>
+      </div>
+
+      <h4 class="sub">Favicon set</h4>
+      <p style="color:var(--text-dim);font-size:14px;margin-bottom:12px;">All sizes available as SVG (preferred) and PNG fallback in <span class="mono">/brand/favicon/</span>.</p>
+      <table class="tokens">
+        <thead><tr><th>File</th><th>Size</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">favicon-16.svg</td><td class="mono">16 × 16</td><td>Browser tab</td></tr>
+          <tr><td class="mono">favicon-32.svg</td><td class="mono">32 × 32</td><td>Browser tab (hi-DPI)</td></tr>
+          <tr><td class="mono">favicon-64.svg</td><td class="mono">64 × 64</td><td>Bookmarks</td></tr>
+          <tr><td class="mono">favicon-128.svg</td><td class="mono">128 × 128</td><td>Pinned tab</td></tr>
+          <tr><td class="mono">favicon-1024.svg</td><td class="mono">1024 × 1024</td><td>App icon source</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ─────────── DO / DON'T ─────────── -->
+    <section id="rules">
+      <div class="section-head">
+        <div class="eyebrow">09 · Application rules</div>
+        <h2>Do &amp; don't</h2>
+        <p>The non-negotiables when applying the brand across surfaces.</p>
+      </div>
+
+      <div class="rules">
+        <div class="col do">
+          <h4>Do</h4>
+          <ul>
+            <li>Use brand green for accents only — text, icons, links, focus rings, primary CTAs.</li>
+            <li>Default to the dark theme. Light theme is the opt-in alternative.</li>
+            <li>Use Inter Medium (500) as the body default, not Regular.</li>
+            <li>Use Space Grotesk on every heading and section label.</li>
+            <li>Keep every spacing value as a multiple of 4.</li>
+            <li>Use brand red <span class="mono">#C50117</span> for destructive / error states only.</li>
+            <li>Use Material Symbols Rounded for all UI iconography.</li>
+            <li>Use the 10 brand SVGs for editorial / hero / empty-state moments only.</li>
+            <li>Use only the four approved logo color treatments.</li>
+          </ul>
+        </div>
+        <div class="col dont">
+          <h4>Don't</h4>
+          <ul>
+            <li>Tint surfaces (backgrounds, panels, borders) with green — surfaces stay neutral.</li>
+            <li>Use brand red as a general accent or highlight color.</li>
+            <li>Use arbitrary spacing like <span class="mono">[7px]</span> or <span class="mono">[15px]</span>.</li>
+            <li>Fall back to Inter Regular for body — body weight is Medium (500).</li>
+            <li>Hard-code hex colors on icons — use semantic tokens that re-color across themes.</li>
+            <li>Recolor the logo outside the four approved variations.</li>
+            <li>Apply drop-shadows or effects to the logo mark.</li>
+            <li>Stretch, crop, or squash the logo — preserve aspect ratio.</li>
+            <li>Mix Material Symbols and Lucide (or any other icon library) in the same product.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p><strong style="color:var(--text)">SponsorBridge Design System</strong></p>
+      <p>Source of truth: Sponsor Bridge Brand Style Guide V01 (2026), Storybook foundations at <span class="mono">apps/web/src/stories/</span>, design tokens at <span class="mono">apps/web/src/app/globals.css</span>.</p>
+      <p>Brand assets in <span class="mono">apps/web/public/brand/</span> (logo, app-icon, favicon, icon).</p>
+      <p style="margin-top:16px;">Open this file from the dev server at <span class="mono">http://localhost:3000/style-guide.html</span> or directly from disk to view offline.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

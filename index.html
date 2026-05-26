@@ -327,14 +327,44 @@
       </table>
 
       <h4 class="sub">Active / selected interactive states</h4>
-      <p style="color:var(--text-dim);font-size:14px;">Sidebar items, settings tabs, and selected rows use these green-tinted states so the brand reads on dark surfaces without coloring the surfaces themselves.</p>
-      <table class="tokens">
-        <thead><tr><th>Role</th><th>Light</th><th>Dark</th></tr></thead>
+      <p style="color:var(--text-dim);font-size:14px;">Selected sidebar items, settings tabs, and active <span class="mono">&lt;Tabs&gt;</span> triggers use a brand gradient — not a flat green tint — so the brand reads strongly on dark surfaces without coloring the surfaces themselves. The same treatment applies in both light and dark themes.</p>
+
+      <div class="card" style="padding:0;overflow:hidden;margin-top:12px;">
+        <div style="background:linear-gradient(90deg, #06C8A3 0%, #036351 100%); padding:32px 24px; display:flex; align-items:center; justify-content:space-between; color:#FFFFFF;">
+          <div>
+            <div class="mono" style="font-size:11px; letter-spacing:0.10em; text-transform:uppercase; opacity:0.85; margin-bottom:8px;">.bg-state-active-gradient</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:600; letter-spacing:-0.01em;">Active state gradient</div>
+            <div style="font-size:13px; opacity:0.9; margin-top:6px;">Used on selected sidebar items, active tabs, and primary nav.</div>
+          </div>
+          <div class="mono" style="text-align:right; font-size:12px; opacity:0.95;">
+            linear-gradient(90deg,<br />
+            &nbsp;&nbsp;#06C8A3 0%,<br />
+            &nbsp;&nbsp;#036351 100%<br />
+            )
+          </div>
+        </div>
+      </div>
+
+      <table class="tokens" style="margin-top:16px;">
+        <thead><tr><th>Token</th><th>Value</th><th>Notes</th></tr></thead>
         <tbody>
-          <tr><td><span class="role">state-active-bg</span></td><td class="mono">rgba(31, 184, 116, 0.10)</td><td class="mono">rgba(91, 227, 164, 0.14)</td></tr>
-          <tr><td><span class="role">state-active-fg</span></td><td class="mono"><span class="swatch-dot" style="background:#16915C"></span>#16915C (green-700)</td><td class="mono"><span class="swatch-dot" style="background:#5BE3A4"></span>#5BE3A4 (green-400)</td></tr>
-          <tr><td><span class="role">state-active-border</span></td><td class="mono">rgba(31, 184, 116, 0.40)</td><td class="mono">rgba(91, 227, 164, 0.35)</td></tr>
-          <tr><td><span class="role">state-hover-bg</span></td><td class="mono">rgba(31, 184, 116, 0.05)</td><td class="mono">rgba(91, 227, 164, 0.06)</td></tr>
+          <tr><td><span class="role">state-active-gradient · start</span></td><td class="mono"><span class="swatch-dot" style="background:#06C8A3"></span>#06C8A3</td><td>Left edge (90deg horizontal)</td></tr>
+          <tr><td><span class="role">state-active-gradient · end</span></td><td class="mono"><span class="swatch-dot" style="background:#036351"></span>#036351</td><td>Right edge</td></tr>
+          <tr><td><span class="role">state-active-fg</span></td><td class="mono"><span class="swatch-dot" style="background:#FFFFFF;border-color:rgba(0,0,0,0.1)"></span>#FFFFFF</td><td>Text and icon color on the gradient (both themes)</td></tr>
+          <tr><td><span class="role">state-hover-bg · light</span></td><td class="mono">rgba(31, 184, 116, 0.05)</td><td>Subtle green wash on hover</td></tr>
+          <tr><td><span class="role">state-hover-bg · dark</span></td><td class="mono">rgba(91, 227, 164, 0.06)</td><td>Subtle green wash on hover</td></tr>
+        </tbody>
+      </table>
+
+      <p style="color:var(--text-dim);font-size:13px;margin-top:12px;">A vertical variant <span class="mono">.bg-state-active-gradient-vertical</span> (180deg, same stops) is available for any UI element where the gradient should flow top-to-bottom instead of left-to-right.</p>
+
+      <h4 class="sub">Sidebar — expanded &amp; collapsed (rail)</h4>
+      <p style="color:var(--text-dim);font-size:14px;">The desktop sidebar has two states. <strong>Expanded</strong> at 260 px with full labels and the show list. <strong>Collapsed</strong> at 64 px as an icon-only rail showing workspace avatar, top nav (Overview, Assistant), bottom nav (Sponsors, Assets, Settings), and the user menu. The collapsed rail never disappears — users always see where the sidebar lives.</p>
+      <table class="tokens">
+        <thead><tr><th>State</th><th>Width</th><th>Shows</th></tr></thead>
+        <tbody>
+          <tr><td><span class="role">Expanded</span></td><td class="mono">260 px</td><td>Workspace · top nav · pinned shows · all shows · bottom nav · user</td></tr>
+          <tr><td><span class="role">Collapsed (rail)</span></td><td class="mono">64 px</td><td>Workspace avatar · Overview · Assistant · Sponsors · Assets · Settings · user avatar (icons only, with hover tooltips)</td></tr>
         </tbody>
       </table>
     </section>

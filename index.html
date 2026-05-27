@@ -262,6 +262,55 @@
         <div class="swatch dark" style="background:#032F2C"><div class="step">950</div><div class="hex">#032F2C</div></div>
       </div>
 
+      <h3 class="sub">Brand Neutrals — gray scale (11 steps) &nbsp;<span class="mono" style="font-size:13px;color:var(--text-dimmer)">--brand-neutral-*</span></h3>
+      <p style="color:var(--text-dim);font-size:14px;margin-bottom:8px;">Every gray the app uses anchored to a clean 11-step scale. The named surface tokens (panel, panel-alt, control, etc.) snap to one of these steps — see the role column in the tables below.</p>
+      <div class="scale">
+        <div class="swatch" style="background:#FAFAFA"><div class="step">50</div><div class="hex">#FAFAFA</div></div>
+        <div class="swatch" style="background:#F5F5F5"><div class="step">100</div><div class="hex">#F5F5F5</div></div>
+        <div class="swatch" style="background:#E6E6E6"><div class="step">200</div><div class="hex">#E6E6E6</div></div>
+        <div class="swatch" style="background:#D4D4D4"><div class="step">300</div><div class="hex">#D4D4D4</div></div>
+        <div class="swatch" style="background:#A3A3A3"><div class="step">400</div><div class="hex">#A3A3A3</div></div>
+        <div class="swatch dark" style="background:#737373"><div class="step">500</div><div class="hex">#737373</div></div>
+        <div class="swatch dark" style="background:#525252"><div class="step">600</div><div class="hex">#525252</div></div>
+        <div class="swatch dark" style="background:#3A3A3A"><div class="step">700</div><div class="hex">#3A3A3A</div></div>
+        <div class="swatch dark" style="background:#2A2A2A"><div class="step">800</div><div class="hex">#2A2A2A</div></div>
+        <div class="swatch dark" style="background:#181818"><div class="step">900</div><div class="hex">#181818</div></div>
+        <div class="swatch dark" style="background:#0A0A0A"><div class="step">950</div><div class="hex">#0A0A0A</div></div>
+      </div>
+
+      <h4 class="sub">Pure endpoints</h4>
+      <table class="tokens">
+        <thead><tr><th>Token</th><th>Hex</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td><span class="swatch-dot" style="background:#FFFFFF;border-color:rgba(0,0,0,0.12)"></span><span class="role">brand-white</span></td><td class="mono">#FFFFFF</td><td>Pure white — logo on dark, foreground in dark mode, light backgrounds</td></tr>
+          <tr><td><span class="swatch-dot" style="background:#000000"></span><span class="role">brand-black</span></td><td class="mono">#000000</td><td>Pure black — logo treatments, hard contrast contexts</td></tr>
+        </tbody>
+      </table>
+
+      <h4 class="sub">All grays used in the app, by hex</h4>
+      <p style="color:var(--text-dim);font-size:13px;margin-bottom:8px;">Quick reference — every distinct gray value plus the named role(s) that resolve to it. Copy any of these straight into Figma color styles.</p>
+      <table class="tokens">
+        <thead><tr><th>Hex</th><th>Closest scale step</th><th>Named roles in the app</th></tr></thead>
+        <tbody>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#FFFFFF;border-color:rgba(0,0,0,0.12)"></span>#FFFFFF</td><td class="mono">brand-white</td><td>Light: --background, --surface-canvas, --surface-panel, --surface-control, --primary-foreground, --popover · Dark: --foreground, --primary-foreground (gradient), --card-foreground</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#FAFAFA;border-color:rgba(0,0,0,0.1)"></span>#FAFAFA</td><td class="mono">neutral-50</td><td>Light: --surface</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#F7F7F7;border-color:rgba(0,0,0,0.1)"></span>#F7F7F7</td><td class="mono">neutral-50/100</td><td>Light: --surface-panel-alt, --secondary, --muted</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#F0F0F0;border-color:rgba(0,0,0,0.08)"></span>#F0F0F0</td><td class="mono">neutral-100</td><td>Light: --line-subtle</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#E6E6E6;border-color:rgba(0,0,0,0.08)"></span>#E6E6E6</td><td class="mono">neutral-200 (brand-gray)</td><td>Light: --line-default, --border, --input · Brand-defined neutral</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#D4D4D4;border-color:rgba(0,0,0,0.08)"></span>#D4D4D4</td><td class="mono">neutral-300</td><td>Dark: --foreground-secondary</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#C8C8C8;border-color:rgba(0,0,0,0.08)"></span>#C8C8C8</td><td class="mono">neutral-300/400</td><td>Light: --line-strong, --border-crisp, --input border</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#A3A3A3"></span>#A3A3A3</td><td class="mono">neutral-400</td><td>Dark: --foreground-tertiary, --muted-foreground</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#737373"></span>#737373</td><td class="mono">neutral-500</td><td>Dark: --foreground-quaternary</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#3A3A3A"></span>#3A3A3A</td><td class="mono">neutral-700</td><td>Dark: --line-strong, --border-crisp, --input border</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#2A2A2A"></span>#2A2A2A</td><td class="mono">neutral-800</td><td>Dark: --line-default, --border</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#202020"></span>#202020</td><td class="mono">neutral-800/850</td><td>Dark: --surface-control (inputs, buttons backgrounds)</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#181818"></span>#181818</td><td class="mono">neutral-900</td><td>Dark: --surface-panel-alt, --secondary, --muted, --well</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#111111"></span>#111111</td><td class="mono">neutral-900/950</td><td>Dark: --surface-panel, --card, --popover, --sidebar</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#0A0A0A"></span>#0A0A0A</td><td class="mono">neutral-950</td><td>Dark: --background, --surface-canvas (the app's deepest layer)</td></tr>
+          <tr><td class="mono"><span class="swatch-dot" style="background:#000000"></span>#000000</td><td class="mono">brand-black</td><td>Logo treatments, marketing tiles, hard-contrast contexts (not used as an app surface)</td></tr>
+        </tbody>
+      </table>
+
       <h3 class="sub">Neutrals — dark theme surfaces</h3>
       <p style="color:var(--text-dim);font-size:14px;margin-bottom:16px;">Surfaces are intentionally green-free — neutral grays so the brand green reads as a precise accent against them.</p>
       <table class="tokens">

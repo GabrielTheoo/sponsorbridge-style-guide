@@ -44,7 +44,7 @@
     a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
     a:hover { color: var(--green-300); }
     h1, h2, h3, h4, h5, h6 { font-family: "Space Grotesk", sans-serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
-    code, .mono { font-family: "SF Mono", "Cascadia Code", "Fira Code", "Courier New", monospace; font-weight: 500; }
+    code, .mono { font-family: "Inter", system-ui, sans-serif; font-weight: 500; }
 
     /* layout */
     .page { max-width: 1180px; margin: 0 auto; padding: 64px 32px 96px; }
@@ -87,7 +87,7 @@
     .scale .swatch {
       display: flex; flex-direction: column; justify-content: flex-end;
       aspect-ratio: 1 / 1.2; border-radius: 6px; padding: 8px; font-size: 10px; color: rgba(0,0,0,0.7);
-      font-family: "SF Mono", monospace;
+      font-family: "Inter", system-ui, sans-serif;
     }
     .scale .swatch .step { font-weight: 700; font-size: 11px; }
     .scale .swatch .hex { opacity: 0.8; margin-top: 2px; }
@@ -99,14 +99,14 @@
     .type-row { display: grid; grid-template-columns: 240px 1fr; gap: 32px; padding: 20px 0; border-bottom: 1px solid var(--border); align-items: baseline; }
     .type-row:last-child { border-bottom: none; }
     .type-row .meta-col .label { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 14px; color: var(--text); }
-    .type-row .meta-col .specs { font-family: "SF Mono", monospace; font-size: 11px; color: var(--text-dimmer); margin-top: 6px; line-height: 1.6; }
+    .type-row .meta-col .specs { font-family: "Inter", system-ui, sans-serif; font-size: 11px; color: var(--text-dimmer); margin-top: 6px; line-height: 1.6; }
     .type-row .sample { color: var(--text); }
 
     /* spacing scale */
     .spacing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
     .spacing-grid .item { background: var(--panel-alt); border: 1px solid var(--border); border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 16px; }
     .spacing-grid .item .bar { background: var(--green-400); height: 24px; border-radius: 3px; flex-shrink: 0; }
-    .spacing-grid .item .lab { font-family: "SF Mono", monospace; font-size: 12px; }
+    .spacing-grid .item .lab { font-family: "Inter", system-ui, sans-serif; font-size: 12px; }
     .spacing-grid .item .lab strong { display: block; color: var(--text); font-weight: 700; }
     .spacing-grid .item .lab span { color: var(--text-dimmer); }
 
@@ -116,19 +116,19 @@
     .icon-sizes .item { background: var(--panel-alt); border: 1px solid var(--border); border-radius: 8px; padding: 24px; text-align: center; }
     .icon-sizes .item .demo { color: var(--accent); display: flex; align-items: center; justify-content: center; height: 56px; }
     .icon-sizes .item .name { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 13px; margin-top: 12px; }
-    .icon-sizes .item .specs { font-family: "SF Mono", monospace; font-size: 11px; color: var(--text-dimmer); margin-top: 4px; }
+    .icon-sizes .item .specs { font-family: "Inter", system-ui, sans-serif; font-size: 11px; color: var(--text-dimmer); margin-top: 4px; }
     .icon-sample-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; margin-top: 16px; }
     .icon-sample-grid .ico {
       background: var(--panel-alt); border: 1px solid var(--border); border-radius: 8px;
       padding: 12px; display: flex; flex-direction: column; align-items: center; gap: 8px;
-      font-family: "SF Mono", monospace; font-size: 10px; color: var(--text-dimmer); text-align: center;
+      font-family: "Inter", system-ui, sans-serif; font-size: 10px; color: var(--text-dimmer); text-align: center;
     }
     .icon-sample-grid .ico svg { color: var(--text); }
 
     /* logo treatments */
     .logo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
     .logo-tile { aspect-ratio: 1.4 / 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 24px; position: relative; overflow: hidden; }
-    .logo-tile .label { position: absolute; bottom: 12px; left: 12px; right: 12px; font-family: "SF Mono", monospace; font-size: 11px; text-align: left; opacity: 0.85; }
+    .logo-tile .label { position: absolute; bottom: 12px; left: 12px; right: 12px; font-family: "Inter", system-ui, sans-serif; font-size: 11px; text-align: left; opacity: 0.85; }
     .logo-tile.on-green { background: var(--green-500); }
     .logo-tile.on-green .label, .logo-tile.on-red .label { color: rgba(255,255,255,0.95); }
     .logo-tile.on-black { background: var(--black); border: 1px solid var(--border); }
@@ -155,7 +155,7 @@
     .toc h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.10em; color: var(--text-dimmer); margin-bottom: 12px; }
     .toc ol { list-style: none; counter-reset: toc; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 24px; }
     .toc ol li { counter-increment: toc; }
-    .toc ol li::before { content: counter(toc, decimal-leading-zero) "  "; color: var(--text-dimmer); font-family: "SF Mono", monospace; font-size: 12px; }
+    .toc ol li::before { content: counter(toc, decimal-leading-zero) "  "; color: var(--text-dimmer); font-family: "Inter", system-ui, sans-serif; font-size: 12px; }
     .toc a { color: var(--text); text-decoration: none; font-weight: 500; font-size: 14px; }
     .toc a:hover { color: var(--accent); }
 
@@ -527,7 +527,7 @@
           <div class="meta-col">
             <div class="label">.font-mono-value</div>
             <div class="specs">
-              SF Mono · 500<br/>
+              Inter · 500<br/>
               14 / 14 · 0
             </div>
           </div>
@@ -538,7 +538,7 @@
           <div class="meta-col">
             <div class="label">.font-mono-label</div>
             <div class="specs">
-              SF Mono · 600<br/>
+              Inter · 600<br/>
               12 / 12 · 0.10em uppercase
             </div>
           </div>

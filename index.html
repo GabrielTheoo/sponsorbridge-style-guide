@@ -189,6 +189,7 @@
         <li><a href="#spacing">Spacing &amp; layout</a></li>
         <li><a href="#radius">Radius &amp; shadows</a></li>
         <li><a href="#icons">Iconography</a></li>
+        <li><a href="#destructive">Delete &amp; destructive</a></li>
         <li><a href="#logo">Logo &amp; favicon</a></li>
         <li><a href="#rules">Do &amp; don't</a></li>
       </ol>
@@ -687,10 +688,69 @@
       </div>
     </section>
 
+    <!-- ─────────── DESTRUCTIVE PATTERN ─────────── -->
+    <section id="destructive">
+      <div class="section-head">
+        <div class="eyebrow">08 · Application patterns</div>
+        <h2>Delete &amp; destructive actions</h2>
+        <p>Delete, remove, archive — these never use brand red. Red is reserved for true errors (form validation, failed uploads, blocked status). A confirmation dialog already does the warning work; the trigger button doesn't need to scream.</p>
+      </div>
+
+      <h4 class="sub">The pattern — row-level Delete</h4>
+      <p style="color:var(--text-dim);font-size:14px;margin-bottom:12px;">Delete sits in the action row alongside Edit, Upload, Assign — visually equivalent. Outline border + trash icon + "Delete" label, same weight as its neighbors.</p>
+      <div class="card" style="padding:24px;">
+        <div style="display:flex;gap:8px;justify-content:flex-end;align-items:center;flex-wrap:wrap;font-family:var(--font-body);">
+          <button style="display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:6px;background:linear-gradient(90deg,#06C8A3,#036351);color:#fff;border:0;font-weight:500;font-size:12px;cursor:default;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Open Review Room
+          </button>
+          <button style="display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:6px;background:transparent;color:var(--text);border:1px solid var(--n-border-strong);font-weight:500;font-size:12px;cursor:default;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Upload
+          </button>
+          <button style="display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:6px;background:transparent;color:var(--text);border:1px solid var(--n-border-strong);font-weight:500;font-size:12px;cursor:default;">
+            Edit
+          </button>
+          <button style="display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:6px;background:transparent;color:var(--text);border:1px solid var(--n-border-strong);font-weight:500;font-size:12px;cursor:default;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg>
+            Delete
+          </button>
+        </div>
+      </div>
+
+      <h4 class="sub">Tokens &amp; rules</h4>
+      <table class="tokens">
+        <thead><tr><th>Slot</th><th>Treatment</th></tr></thead>
+        <tbody>
+          <tr><td><span class="role">Row Delete button</span></td><td>Tabler <span class="mono">IconTrash</span> + "Delete" label · Button <span class="mono">variant="outline"</span>, size <span class="mono">sm</span></td></tr>
+          <tr><td><span class="role">Remove button</span></td><td>Same outline + icon pattern. Use <span class="mono">IconUserMinus</span> when removing a person, <span class="mono">IconTrash</span> otherwise.</td></tr>
+          <tr><td><span class="role">Archive button</span></td><td>Outline + <span class="mono">IconArchive</span> + "Archive" label. Same visual weight.</td></tr>
+          <tr><td><span class="role">Confirmation dialog confirm</span></td><td>Button <span class="mono">variant="destructive"</span> — now visually identical to Outline (no red). Title of the modal carries the warning context.</td></tr>
+          <tr><td><span class="role">DropdownMenuItem destructive</span></td><td>No red text. The trash icon is still allowed; the label color stays neutral.</td></tr>
+          <tr><td><span class="role">Progress / metric bars</span></td><td>Always brand green (<span class="mono">bg-primary</span>), no traffic-light coloring. Low values use the same green at full saturation — they don't switch to amber or red.</td></tr>
+        </tbody>
+      </table>
+
+      <h4 class="sub">When red <em>is</em> the right call</h4>
+      <ul style="margin-top:12px;color:var(--text-dim);font-size:14px;line-height:1.8;list-style:none;padding-left:0;">
+        <li>✓ Form validation error message under an input (<span class="mono">AuthFormError</span>)</li>
+        <li>✓ Failed upload toast or "Tool call denied" status</li>
+        <li>✓ Status chip for genuinely blocked content (<span class="mono">--status-blocked</span>)</li>
+        <li>✓ The <span class="mono">brand-red-*</span> palette itself in marketing/decks</li>
+      </ul>
+      <ul style="margin-top:12px;color:var(--text-dim);font-size:14px;line-height:1.8;list-style:none;padding-left:0;">
+        <li>✗ Trigger button to open a delete confirmation dialog</li>
+        <li>✗ "Sign out" or "Logout" menu items</li>
+        <li>✗ Progress bars below their target</li>
+        <li>✗ Hover state on a row's remove/delete icon</li>
+        <li>✗ "Danger Zone" section action buttons (the section header label can still be red — that's a section marker, not an action)</li>
+      </ul>
+    </section>
+
     <!-- ─────────── LOGO ─────────── -->
     <section id="logo">
       <div class="section-head">
-        <div class="eyebrow">08 · Logo</div>
+        <div class="eyebrow">09 · Logo</div>
         <h2>Logo &amp; favicon</h2>
         <p>Four approved color treatments. The brand mark is a geometric form combined with the SponsorBridge wordmark. Use full lockup for marketing, visual mark only for compact app contexts (favicons, app icons).</p>
       </div>
@@ -732,7 +792,7 @@
     <!-- ─────────── DO / DON'T ─────────── -->
     <section id="rules">
       <div class="section-head">
-        <div class="eyebrow">09 · Application rules</div>
+        <div class="eyebrow">10 · Application rules</div>
         <h2>Do &amp; don't</h2>
         <p>The non-negotiables when applying the brand across surfaces.</p>
       </div>
@@ -746,8 +806,9 @@
             <li>Use Inter Medium (500) as the body default, not Regular.</li>
             <li>Use Space Grotesk on every heading and section label.</li>
             <li>Keep every spacing value as a multiple of 4.</li>
-            <li>Use brand red <span class="mono">#C50117</span> for destructive / error states only.</li>
-            <li>Use Material Symbols Rounded for all UI iconography.</li>
+            <li>Use brand red <span class="mono">#C50117</span> for <strong>true error states only</strong> — form validation, failed uploads, blocked status. Not for Delete/Remove/Archive triggers.</li>
+            <li>Make Delete look like Edit and Upload — outline border + Tabler trash icon + "Delete" label.</li>
+            <li>Use Tabler Icons for all UI iconography.</li>
             <li>Use the 10 brand SVGs for editorial / hero / empty-state moments only.</li>
             <li>Use only the four approved logo color treatments.</li>
           </ul>
@@ -757,13 +818,15 @@
           <ul>
             <li>Tint surfaces (backgrounds, panels, borders) with green — surfaces stay neutral.</li>
             <li>Use brand red as a general accent or highlight color.</li>
+            <li>Paint Delete/Remove/Archive buttons red — that signals "error happened", not "this needs confirmation".</li>
+            <li>Use red traffic-light coloring on progress bars when below target — keep them brand green and let the number do the talking.</li>
             <li>Use arbitrary spacing like <span class="mono">[7px]</span> or <span class="mono">[15px]</span>.</li>
             <li>Fall back to Inter Regular for body — body weight is Medium (500).</li>
             <li>Hard-code hex colors on icons — use semantic tokens that re-color across themes.</li>
             <li>Recolor the logo outside the four approved variations.</li>
             <li>Apply drop-shadows or effects to the logo mark.</li>
             <li>Stretch, crop, or squash the logo — preserve aspect ratio.</li>
-            <li>Mix Material Symbols and Lucide (or any other icon library) in the same product.</li>
+            <li>Mix Tabler and Lucide (or any other icon library) in the same product.</li>
           </ul>
         </div>
       </div>
